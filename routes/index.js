@@ -1,6 +1,7 @@
 const busboy = require('koa-busboy');
-let database = require('../database.json') || [];
 const fs = require('fs');
+
+let database = (fs.existsSync('./database.json') && JSON.parse(fs.readFileSync('./database.json', {encoding: 'utf-8'}))) || [];
 const uuid = require('uuid');
 
 const uploader = busboy({
@@ -85,7 +86,11 @@ module.exports =  (router) => {
       index: ctx.params.id
     });
   });
-
+  router.get('/detele/:id', async ctx => {
+    database.splice(ctx.params.id, 1);
+    fs.writeFileSync('./database.json', JSON.stringify(database), {encoding: 'utf-8'});
+    ctx.redirect('/');
+  });
   router.post('/create/:id', async ctx => {
     let obj = ctx.request.body;
     const meta = (

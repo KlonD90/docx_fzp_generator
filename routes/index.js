@@ -86,7 +86,7 @@ module.exports =  (router) => {
       index: ctx.params.id
     });
   });
-  router.get('/detele/:id', async ctx => {
+  router.get('/delete/:id', async ctx => {
     database.splice(ctx.params.id, 1);
     fs.writeFileSync('./database.json', JSON.stringify(database), {encoding: 'utf-8'});
     ctx.redirect('/');

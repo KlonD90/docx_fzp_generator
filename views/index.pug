@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1
+    |Список
+  ul.list
+    each item, index in list
+      li.item
+        b.item__title= item.name
+        .control
+          a.item__create.button(role="button", href="/create/"+index)
+            | Сгенерировать документ
+          a.item__edit.button(role="button", href="/item/"+index)
+            | Редактировать
+    if list.length == 0
+      | Нету сохраненных шаблонов
+
+  a._c-btn._c-btn--bloc(role="button", href="/add")
+    | Добавить шаблон

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  form#create_form(type="post", method="post", action="/create/"+index)
+    h1
+      | Генерация #{item.name}
+    each field in meta
+      .control
+        .label
+          | #{field.name}
+        .field
+          input(type="text", name=field.key, placeholder="___________________").input
+    .control
+      .field
+        button.button.is-primary
+          | Сгенерировать ходатайство
+
+  script('/js/check.js')

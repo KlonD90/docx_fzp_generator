@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  form#add_form(method="post", enctype="multipart/form-data", action="/add", type="post")
+    .field
+      label.label
+        |Название шаблона
+      .control
+        input(type="text", name="name").input
+    .field
+      label.label
+        | docx файл
+      .control
+        input(type="file", name="docx").input
+    .field
+      label.label
+        | meta-json файл
+      .control
+        input(type="file", name="meta").input
+
+    .field
+      .control
+        button.button.is-primary
+          |Создать новый шаблон

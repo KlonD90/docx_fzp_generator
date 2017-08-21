@@ -149,7 +149,7 @@ module.exports =  (router) => {
       .generate({type: 'nodebuffer'});
 
 // buf is a nodejs buffer, you can either write it to a file or do anything else with it.
-    fs.writeFileSync(path.resolve(__dirname, 'output.docx'), buf)
+    
     ctx.attachment(fileName)
     ctx.type ='application/vnd.openxmlformats-officedocument.wordprocessingml.document';
     ctx.body = buf;

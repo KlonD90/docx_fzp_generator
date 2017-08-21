@@ -2,7 +2,12 @@ const Koa = require('koa');
 const Router = require('koa-router');
 const app = new Koa();
 const router = new Router();
+const fs = require('fs');
 
+if (!fs.existsSync('./database.json'))
+  fs.writeFileSync('./database.json', '[]', {encoding: 'utf8'})
+if (!fs.existsSync('./upload'))
+  fs.mkdirSync('./upload');
 const views = require('koa-views');
 const co = require('co');
 const convert = require('koa-convert');
